@@ -64,3 +64,32 @@ header {
     display: inline-block;
     text-align: center;
 }
+
+.menuitem {
+    height: 120px;
+    padding: 0;
+}
+
+.menuitem a {
+    color: #fff;
+    height: 120px;
+    text-decoration: none;
+    width: 100%
+}
+
+.menuitem a i {
+    color: #fafafa;
+    display: block;
+    font-size: 26px;
+    padding-top: 25px;
+}
+
+.menuitem span {
+    color: #fafafa;
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    padding-top: 5px;
+    text-transform: uppercase;
+}
