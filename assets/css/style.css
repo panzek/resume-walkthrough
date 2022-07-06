@@ -93,3 +93,10 @@ header {
     padding-top: 5px;
     text-transform: uppercase;
 }
+
+/* ----------------------Hover.CSS */
+
+.hvr-sweep-to-bottom:before {
+    background: #000000;
+    opacity: 0.2;
+}
