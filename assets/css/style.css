@@ -13,6 +13,10 @@
     background-color: #f4f4f4;
 }
 
+.bg-color-work-history {
+    background-color: #9b59b6;
+}
+
 .ui-menu-color-home {
     background-color: #e67e22;
 }
@@ -61,6 +65,7 @@ h5 {
     float: none;
 }
 
+.history-heading,
 .section-heading {
     font-family: "Exo", sans-serif;
     font-weight: 300;
@@ -263,4 +268,52 @@ footer {
 
 .progress-section {
     margin: 40px 20px;
+}
+
+/* -------------------------Work History */
+
+.history-heading {
+    color: #fafafa;
+    margin-bottom: 50px;
+}
+
+.timeline-item {
+    padding: 4em 3em 0em 2em;
+    position: relative;
+    color: #fafafa;
+    border-left: 1px solid;
+}
+
+.timeline-item p {
+    margin: 0;
+    padding: 0;
+}
+
+.timeline-item:before {
+    content: attr(data-dates);
+    position: absolute;
+    left: 2.5em;
+    top: 3em; /*moves content of data-dates above the employer's text */
+    display: block;
+    font-family: "Exo", sans -serif;
+    font-weight: 500;
+    font-size: 0.8em;
+    padding: 0;
+    margin: 0;
+}
+
+.timeline-item:after { 
+    background-color: #fafafa;
+    border-radius: 12px;
+    content: ''; /* to display empty content */
+    display: block;
+    height: 12px;
+    left: -6px; /* drag to the left slightly to make it sit centrally on timeline border*/ 
+    position: absolute; /* to put inside timeline border, the relative parent */
+    top: 2.4em;
+    width: 12px;
+}
+
+.history-items {
+    margin-bottom: 30px;
 }
