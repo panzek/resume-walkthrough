@@ -69,6 +69,15 @@ and join everything with a new line: .join("\n"). This stops us from having to i
 
 //2. GitHub Form 
 function fetchGitHubInformation() {
+    /*
+    fix issue with our gh-repo-data div not being cleared when there's an empty text box.
+    */
+   $("#gh-user-data").html(""); //set the div to an empty string
+   $("#gh-repo-data").html(""); //set the div to an empty string
+   /*set both user-data and repo-date divs to an empty string
+   Setting their HTML content to an empty string has the effect of emptying these divs.
+   */
+
     var username = $("#gh-username").val();
     if(!username) {
         $("#gh-user-data").html(`<h2>Please enter a GitHub username</h2>`) //using template literal
@@ -114,7 +123,6 @@ function fetchGitHubInformation() {
             }
         });
 }
-
     /*
     we're already displaying our loader. So now we can issue the promise.
     1. We do that by using $.when() and the when() method takes a function as its first argument.
@@ -136,4 +144,9 @@ function fetchGitHubInformation() {
     the indexes in there for these responses: 1stResponse[0] & 2ndResponse[0].
     */
 
- 
+$(document).ready(fetchGitHubInformation);
+/*
+The next thing is have the octocat profile displaying when the page is loaded, instead 
+of just having an empty div. To do this, we're going to use the documentReady() function 
+in jQuery and execute the fetchGitHubInformation() function when the DOM is fully loaded.
+*/
