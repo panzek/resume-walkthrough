@@ -116,11 +116,15 @@ function fetchGitHubInformation() {
             if(errorResponse.status === 404) { //and in case it is a 404 (not found) error
                 $("#gh-user-data").html( //select gh-user-data div, set its HTML to error message that says user wasn't found
                     `<h2> No info found for user: ${username}</h2>`) //we put the error message in an h2 heading
+            } else if (errorResponse.status === 403) { //403 error means forbidden
+                var resetTime = new Date(errorResponse.getResponseHeader('X-RateLimit-Reset') * 1000);
+                $("#gh-user-data").html(`<h4>Too many requests, please wait until ${resetTime.toLocaleTimeString()}</h4>`);
             } else { //but if error that comes back is not be a 404 error
                 console.log(errorResponse); //console.log out the entire error response.
                 $("#gh-user-data").html(
                     `<h2>Error: ${errorResponse.responseJSON.message}</h2>`);
             }
+            
         });
 }
     /*
@@ -142,6 +146,13 @@ function fetchGitHubInformation() {
     c. when we do two calls like this, the .when() method packs a response up 
     into arrays. And each one is the first element of the array. So we just need to put 
     the indexes in there for these responses: 1stResponse[0] & 2ndResponse[0].
+
+    //3c . for the else if 404 error message
+    i. X-RateLimit-Reset header. This is a header that's provided by GitHub to helpfully let us know 
+    when our quota will be reset and when we can start using the API again.
+    ii. we use jQuery to target our "gh-user-data" element. Then set the HTML content 
+    of this element to our friendly error message. We tell the user that they've made too many 
+    requests and then give them the time when they can try again. 
     */
 
 $(document).ready(fetchGitHubInformation);

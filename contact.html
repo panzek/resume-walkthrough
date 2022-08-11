@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" type="text/css">
     <script src="https://kit.fontawesome.com/57e22c6356.js" crossorigin="anonymous"></script>
+    
+    <!-- this EmailJS SDK code snippet copied from EmailJS doc-->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init("jpNH9qqc8DEt1JUuK"); //public key copied from API keys section under my EmailJS account dashboard. 
+        //That makes sure we've a valid EmailJS account for sending emails
+    })();
+    </script>
 </head>
 <body>
     <header>
@@ -55,7 +66,7 @@
                 <h3 class="contact-heading uppercase text-center">Got a project in mind?</h3>
                 <h5 class="uppercase text-center">Let's work together!</h5>
                 <div class="center-form">
-                    <form action="">
+                    <form onsubmit="return sendMail(this);">
                         <input type="text" name="name" id="fullname" class="form-control" placeholder="Name" required />
                         <input type="email" name="email" id="emailaddress" class="form-control" placeholder="Email" required />
                         <textarea rows="5" name="projectsummary" id="projectsummary" class="form-control" 
@@ -71,6 +82,15 @@
             </div>
         </div>
 
+    <!--Now we need to give our attention back to our contact.html file and get this set up to pass 
+        through the values from the form to EmailJS. To do this, we need to update our form element so that 
+        when a form has been submitted, we want to invoke a function that will send the email. To do this, 
+        we add: onsubmit="return sendMail(this);" Note that in the current version of EmailJS, method = "POST" is no longer required
+    
+        We then go further to link in a new script file, which is going to contain our sendMail() function.
+        To do this, we'll scroll down to the end, and just outside the <footer> tag, add a new <script> 
+        tag: src = assets/js/sendemail.js
+    -->
     </section>
     <footer class="container-fluid">
         <div id="footer-details" class="row">
@@ -134,6 +154,6 @@
             </div>
         </div>
     </footer>
-    
+    <script src="assets/js/sendEmail.js"></script>  
 </body>
 </html>
